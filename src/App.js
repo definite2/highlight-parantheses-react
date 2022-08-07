@@ -1,23 +1,21 @@
-import logo from './logo.svg';
+import React, { useState } from 'react';
+import HighlightParentheses from './HighlightParentheses';
 import './App.css';
-
 function App() {
+  const [text, setText] = useState('(test(def)))()');
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Highlight Parentheses</h1>
+      <input
+        className="highlight-input"
+        value={text}
+        onChange={(e) => setText(e.target.value)}
+        type="text"
+      />
+      <div className="highlight-label">Highlihted Text:</div>
+      <div className="highlight-wrapper">
+        <HighlightParentheses text={text} />
+      </div>
     </div>
   );
 }
